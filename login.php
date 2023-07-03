@@ -1,11 +1,5 @@
 <?php
 
-$user = [
-    'login' => '2alheure',
-    'mdp' => 'test',
-    'avatar' => 'https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Akali_0.jpg',
-];
-
 if (!empty($_POST)) {
     // Le formulairee a été soumis.
     // On fait nos vérifications
@@ -17,10 +11,16 @@ if (!empty($_POST)) {
         // Notre utilisateur est correctement identifié
 
         include 'functions.php';
+        include 'user.php';
         session_start();
 
         $_SESSION['pseudo'] = $user['login'];
         $_SESSION['image'] = $user['avatar'];
+
+        if (!empty($_POST['remember'])) {
+            // L'utilisateur veut qu'on se souvienne de lui
+            setcookie('remember', 'toto', time() + 30 * 24 * 60 * 60);
+        }
 
         redirect('index.php');
     } else {
@@ -42,6 +42,11 @@ include 'header.php'; ?>
 
     <label for="password">Mot de passe</label>
     <input type="password" class="outline outline-gray-500 p-1 outline-1 rounded-sm mt-2 mb-8" name="password" id="password" placeholder="Mot de passe">
+
+    <div>
+        <input type="checkbox" class="p-1 outline-1 rounded-sm mt-2 mb-8" name="remember" id="remember" placeholder="Mot de passe" value="true">
+        <label for="remember">Se souvenir de moi</label>
+    </div>
 
     <input type="submit" value="Se connecter" class="cursor-pointer rounded bg-gray-800 text-white hover:bg-gray-600 w-1/2 p-2 mx-auto">
 </form>
