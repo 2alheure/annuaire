@@ -3,6 +3,7 @@
 if (!empty($_POST)) {
     // Le formulairee a été soumis.
     // On fait nos vérifications
+    include 'user.php';
 
     if (
         $_POST['login'] === $user['login']
@@ -11,7 +12,6 @@ if (!empty($_POST)) {
         // Notre utilisateur est correctement identifié
 
         include 'functions.php';
-        include 'user.php';
         session_start();
 
         $_SESSION['pseudo'] = $user['login'];
