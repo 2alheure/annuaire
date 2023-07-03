@@ -11,10 +11,8 @@
 <body>
 
     <div class="container mx-auto">
-        <!-- Menu -->
-        <nav class="flex justify-center p-4">
-            Le menu
-        </nav>
+
+        <?php include 'menu.php'; ?>
 
         <h1 class="mt-4 mb-8 font-bold text-2xl">Bienvenue sur mon super site</h1>
 
