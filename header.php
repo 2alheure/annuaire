@@ -16,7 +16,7 @@ session_start();
 <div class="container mx-auto">
 
     <!-- Menu -->
-    <nav class="flex justify-center p-4 gap-8 items-center bg-gray-800 text-white">
+    <nav class="flex p-4 gap-8 items-center bg-gray-800 text-white">
 
         <a href="index.php" class="hover:underline">Accueil</a>
 
