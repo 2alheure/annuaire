@@ -3,28 +3,43 @@
 if (!empty($_POST)) {
     // Le formulairee a été soumis.
     // On fait nos vérifications
-    include 'user.php';
 
-    if (
-        $_POST['login'] === $user['login']
-        && $_POST['password'] === $user['mdp']
-    ) {
-        // Notre utilisateur est correctement identifié
 
+    if (!empty($_POST['login']) && !empty($_POST['password'])) {
+        include 'user.php';
         include 'functions.php';
-        session_start();
 
-        $_SESSION['pseudo'] = $user['login'];
-        $_SESSION['image'] = $user['avatar'];
+        // 1 / On se connect
+        $bdd = connect_to_db();
+        // 2 / Requête
+        $resultat = $bdd->query("SELECT * FROM user WHERE email = {$_POST['login']} AND password = {$_POST['password']}");
+        // 3 / On prend l'info
+        $user = $resultat->fetch(PDO::FETCH_OBJ);
 
-        if (!empty($_POST['remember'])) {
-            // L'utilisateur veut qu'on se souvienne de lui
-            setcookie('remember', 'toto', time() + 30 * 24 * 60 * 60);
+        if ($user !== false) {
+            // Notre utilisateur est correctement identifié
+
+            session_start();
+
+            $_SESSION['user'] = $user; // On pourrait mettre l'objet directement dans la session : aucun souci
+
+            $_SESSION['id'] = $user->id;
+            $_SESSION['email'] = $user->email;
+            $_SESSION['pseudo'] = $user->pseudo;
+            $_SESSION['image'] = $user->image;
+
+            if (!empty($_POST['remember'])) {
+                // L'utilisateur veut qu'on se souvienne de lui
+                setcookie('remember', $user->id, time() + 30 * 24 * 60 * 60);
+            }
+
+            redirect('index.php');
+        } else {
+            // L'utilisateur a fait une erreur
+            $error = true;
         }
-
-        redirect('index.php');
     } else {
-        // L'utilisateur a fait une erreur
+        // L'utilisateur a oublié un champ
         $error = true;
     }
 }

@@ -8,14 +8,28 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 if (
     !is_connected()
     && !empty($_COOKIE['remember'])
-    && $_COOKIE['remember'] === 'toto'
 ) {
     // On n'est pas connecté mais on a le cookie remember
     // Donc on connecte d'office l'utilisateur
 
     include 'user.php';
-    $_SESSION['pseudo'] = $user['login'];
-    $_SESSION['image'] = $user['avatar'];
+    $bdd = connect_to_db();
+    $resultat = $bdd->query('SELECT * FROM user WHERE id = ' . $_COOKIE['remember']);
+    $user = $resultat->fetch(PDO::FETCH_OBJ);
+
+    if ($user !== false) {
+        $_SESSION['user'] = $user; // On pourrait mettre l'objet directement dans la session : aucun souci
+
+        $_SESSION['id'] = $user->id;
+        $_SESSION['email'] = $user->email;
+        $_SESSION['pseudo'] = $user->pseudo;
+        $_SESSION['image'] = $user->image;
+    } else {
+        // Si on trouve pas l'utilisateur
+        // On nous a envoyé n'importe quoi
+        // Donc on détruit le cookie
+        setcookie('remember', '', -1);
+    }
 }
 ?>
 <!DOCTYPE html>
