@@ -39,6 +39,7 @@ if (
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon super site</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -50,6 +51,7 @@ if (
             <a href="index.php" class="hover:underline">Accueil</a>
 
             <?php if (is_connected()) : ?>
+                <a href="list.php" class="hover:underline">Mes contacts</a>
                 <a href="logout.php" class="hover:underline">Se déconnecter</a>
                 <a href="profil.php" class="hover:underline flex gap-2 items-center ml-auto">
                     <img src="<?= $_SESSION['image'] ?>" alt="" class="bg-gray-500 w-10 h-10 object-cover rounded-full">
