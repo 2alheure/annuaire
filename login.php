@@ -6,8 +6,7 @@ if (!empty($_POST)) {
 
 
     if (!empty($_POST['login']) && !empty($_POST['password'])) {
-        include 'user.php';
-        include 'functions.php';
+        include_once 'functions.php';
 
         // 1 / On se connect
         $bdd = connect_to_db();
@@ -44,7 +43,7 @@ if (!empty($_POST)) {
     }
 }
 
-include 'header.php'; ?>
+include_once 'header.php'; ?>
 
 <?php if (!empty($error)) : ?>
     <p class="text-red-700 text-bold text-center mx-auto md:w-1/2 w-full p-4 mt-8 rounded bg-red-100">Vous vous êtes trompé dans votre identifiant ou votre mot de passe. Veuillez réessayer.</p>
@@ -66,4 +65,4 @@ include 'header.php'; ?>
     <input type="submit" value="Se connecter" class="cursor-pointer rounded bg-gray-800 text-white hover:bg-gray-600 w-1/2 p-2 mx-auto">
 </form>
 
-<?php include 'footer.php'; ?>
+<?php include_once 'footer.php'; ?>

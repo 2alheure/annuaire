@@ -1,5 +1,10 @@
 <?php
 session_start();
+include_once 'functions.php';
+
+if (!is_connected()) {
+    error401();
+}
 
 if (!empty($_POST) || !empty($_FILES)) {
 
@@ -33,7 +38,7 @@ if (!empty($_POST) || !empty($_FILES)) {
     }
 }
 
-include 'header.php'; ?>
+include_once 'header.php'; ?>
 
 <form action="" method="post" class="flex flex-col md:w-1/2 w-full border-2 mt-8 shadow-xl rounded-lg mx-auto p-8" enctype="multipart/form-data">
     <label for="login">Nouvel identifiant</label>
@@ -57,4 +62,4 @@ include 'header.php'; ?>
     <input type="submit" value="Modifier votre profil" class="cursor-pointer rounded bg-gray-800 text-white hover:bg-gray-600 w-1/2 p-2 mx-auto">
 </form>
 
-<?php include 'footer.php'; ?>
+<?php include_once 'footer.php'; ?>

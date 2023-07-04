@@ -1,5 +1,5 @@
 <?php
-include 'functions.php';
+include_once 'functions.php';
 
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
@@ -12,7 +12,6 @@ if (
     // On n'est pas connecté mais on a le cookie remember
     // Donc on connecte d'office l'utilisateur
 
-    include 'user.php';
     $bdd = connect_to_db();
     $resultat = $bdd->query('SELECT * FROM user WHERE id = ' . $_COOKIE['remember']);
     $user = $resultat->fetch(PDO::FETCH_OBJ);

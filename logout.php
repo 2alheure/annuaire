@@ -5,5 +5,5 @@ session_destroy();
 
 setcookie('remember', '', -1); // On supprime le cookie
 
-include 'functions.php';
+include_once 'functions.php';
 redirect('index.php');

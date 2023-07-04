@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?php include_once 'header.php'; ?>
 
 <h1 class="mt-4 mb-8 font-bold text-2xl">Bienvenue sur mon super site</h1>
 
@@ -10,4 +10,4 @@
     Molestias quis eum eveniet velit nisi deserunt, autem quod ab. Labore voluptas magnam illo quo, sequi rerum inventore harum vero nostrum, ad ut quia molestias culpa alias quod aperiam dolorum.
 </p>
 
-<?php include 'footer.php'; ?>
+<?php include_once 'footer.php'; ?>
