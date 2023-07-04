@@ -27,7 +27,9 @@ include_once 'header.php';
             <p class="flex gap-8 mt-4">
                 <a href="details.php?id=<?= $c->id ?>" class="bg-blue-500 text-white py-1 px-4 rounded"><i class="fa fa-eye" aria-hidden="true"></i></a>
                 <a href="update.php?id=<?= $c->id ?>" class="bg-yellow-500 text-white py-1 px-4 rounded"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                <a href="delete.php?id=<?= $c->id ?>" class="bg-red-500 text-white py-1 px-4 rounded"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                <a href="delete.php?id=<?= $c->id ?>" class="bg-red-500 text-white py-1 px-4 rounded" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce contact ?')">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </a>
             </p>
         </div>
     <?php endforeach; ?>
