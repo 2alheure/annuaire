@@ -25,9 +25,9 @@ include_once 'header.php';
         <div class="border p-8">
             <h2><?= $c->prenom . ' ' . mb_strtoupper($c->nom) ?></h2>
             <p class="flex gap-8 mt-4">
-                <a href="details.php" class="bg-blue-500 text-white py-1 px-4 rounded"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                <a href="update.php" class="bg-yellow-500 text-white py-1 px-4 rounded"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                <a href="delete.php" class="bg-red-500 text-white py-1 px-4 rounded"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                <a href="details.php?id=<?= $c->id ?>" class="bg-blue-500 text-white py-1 px-4 rounded"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                <a href="update.php?id=<?= $c->id ?>" class="bg-yellow-500 text-white py-1 px-4 rounded"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                <a href="delete.php?id=<?= $c->id ?>" class="bg-red-500 text-white py-1 px-4 rounded"><i class="fa fa-trash" aria-hidden="true"></i></a>
             </p>
         </div>
     <?php endforeach; ?>

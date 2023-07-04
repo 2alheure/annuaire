@@ -17,3 +17,8 @@ function error401() {
     include_once '401.php';
     exit;
 }
+
+function error404() {
+    include_once '404.php';
+    exit;
+}
