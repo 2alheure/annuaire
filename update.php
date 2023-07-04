@@ -7,6 +7,10 @@ if (!is_connected()) {
     error401();
 }
 
+if (empty($_GET['id'])) {
+    error404();
+}
+
 if (!empty($_POST)) {
     $error = false;
 
