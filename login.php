@@ -11,7 +11,7 @@ if (!empty($_POST)) {
         // 1 / On se connect
         $bdd = connect_to_db();
         // 2 / Requête
-        $resultat = $bdd->query("SELECT * FROM user WHERE email = {$_POST['login']} AND password = {$_POST['password']}");
+        $resultat = $bdd->query("SELECT * FROM user WHERE email = '{$_POST['login']}' AND password = '{$_POST['password']}'");
         // 3 / On prend l'info
         $user = $resultat->fetch(PDO::FETCH_OBJ);
 
